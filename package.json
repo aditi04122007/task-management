@@ -1,0 +1,12 @@
+{
+  "name": "task-management",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TaskFlow full-stack task management application",
+  "scripts": {
+    "install-backend": "npm install --prefix backend",
+    "install-frontend": "npm install --prefix frontend",
+    "start": "node backend/server.js",
+    "build": "npm install --prefix backend"
+  }
+}
