@@ -56,8 +56,11 @@ const registerUser = async (req, res) => {
     } catch (error) {
         console.error("Registration error:", error);
 
+        const isDbError = error.code === 'ECONNREFUSED' || error.code === 'ER_ACCESS_DENIED_ERROR' || error.code === 'ENOTFOUND' || error.code === 'ER_NO_SUCH_TABLE';
         res.status(500).json({
-            message: "Server error"
+            message: isDbError
+                ? `Database error (${error.code || 'DB_ERROR'}): Check MySQL credentials and tables.`
+                : (error.message || "Server error")
         });
     }
 };

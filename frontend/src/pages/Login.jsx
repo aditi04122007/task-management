@@ -42,7 +42,7 @@ const Login = () => {
       addToast('Login successful! Welcome back.', 'success');
       navigate('/dashboard');
     } catch (err) {
-      const msg = err.response?.data?.message || 'Login failed. Please check your credentials.';
+      const msg = err.response?.data?.message || (err.message === 'Network Error' ? 'Cannot connect to backend server. Please verify your VITE_API_URL or wait a few seconds for Render to wake up.' : 'Login failed. Please check your credentials.');
       setErrors({ form: msg });
       addToast(msg, 'error');
     } finally {

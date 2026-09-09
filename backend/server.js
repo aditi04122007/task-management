@@ -11,19 +11,9 @@ const taskRoutes = require("./routes/taskRoutes");
 
 const app = express();
 
-// Configure CORS for production and development
-const allowedOrigins = process.env.FRONTEND_URL
-    ? [process.env.FRONTEND_URL, "http://localhost:5173", "http://localhost:3000"]
-    : ["http://localhost:5173", "http://localhost:3000"];
-
+// Configure CORS to allow requests from frontend deployments
 app.use(cors({
-    origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps, curl, postman)
-        if (!origin || allowedOrigins.includes(origin) || !process.env.FRONTEND_URL) {
-            return callback(null, true);
-        }
-        return callback(null, true); // Permissive in dev, or origin
-    },
+    origin: true,
     credentials: true
 }));
 app.use(express.json());

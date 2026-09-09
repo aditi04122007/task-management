@@ -59,7 +59,7 @@ const Register = () => {
       addToast('Registration successful! Please log in.', 'success');
       navigate('/login');
     } catch (err) {
-      const msg = err.response?.data?.message || 'Registration failed. Please try again.';
+      const msg = err.response?.data?.message || (err.message === 'Network Error' ? 'Cannot connect to backend server. Please verify your VITE_API_URL or wait a few seconds for Render to wake up.' : 'Registration failed. Please try again.');
       setErrors({ form: msg });
       addToast(msg, 'error');
     } finally {
