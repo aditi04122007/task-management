@@ -25,8 +25,11 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-
 app.use("/api/tasks", taskRoutes);
+
+// Fallback aliases so both /api/... and /... work
+app.use("/auth", authRoutes);
+app.use("/tasks", taskRoutes);
 
 app.get("/api/test-db", async (req, res) => {
     try {
