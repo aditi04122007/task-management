@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Fallback User",
+      "email": "fb@example.com",
+      "password": "hashed123",
+      "created_at": "2026-09-09T11:06:40.623Z"
+    }
+  ],
+  "tasks": [],
+  "nextUserId": 2,
+  "nextTaskId": 1
+}
